@@ -1,0 +1,30 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+{{/each}}
+
+<div class="card">
+    <div class="card-body">
+        <!--Área onde o usuário pode digitar o CEP que deseja consultar-->
+        <form action="" method="post" id="cepForm">
+            <input type="text" name="cep" id="cep" placeholder="Digite o CEP desejado">
+                {{!-- pattern="[0-9]{8}" autofocus required title="Por favor informe 8 digitos"> --}}
+            <span id="error"></span>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Buscar</button>
+        </form>
+    </div>
+</div>
+<!--Área onde as informações do CEP consultado serão apresentadas-->
+{{#if resp}}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h2>Endereço</h2>
+            <h4>Logradouro: {{resp.logradouro}}</h4>
+            <h4>Bairro: {{resp.bairro}}</h4>
+            <h4>Cidade: {{resp.localidade}}</h4>
+            <h4>Estado: {{resp.uf}}</h4>
+        </div>
+    </div>
+{{/if}}
+
